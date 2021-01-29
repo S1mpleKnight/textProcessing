@@ -1,3 +1,3 @@
 # textProcessing
 
-###information handling
+information handling
