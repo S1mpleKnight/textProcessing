@@ -22,7 +22,7 @@ public class LexemeHandler implements BaseTextHandler{
     }
 
     @Override
-    public List<Unit> handleRequest(){
+    public List<Unit> handleRequest(List<String> sequence){
         return null;
     }
 }
