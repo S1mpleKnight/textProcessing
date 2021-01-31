@@ -1,0 +1,13 @@
+package com.epam.jwd.text.interpreter.impl;
+
+import com.epam.jwd.text.interpreter.Expression;
+import com.epam.jwd.text.interpreter.api.AbstractExpression;
+
+public class TerminalExpressionLeftShift implements AbstractExpression{
+    @Override
+    public void interpret(Expression c){
+        int right = c.popValue();
+        int left = c.popValue();
+        c.pushValue(left << right);
+    }
+}

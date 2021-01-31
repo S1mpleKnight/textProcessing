@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FileReader{
-    private static final Logger LOGGER = LoggerFactory.getLogger(FileReader.class);
+public class FileWorker{
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileWorker.class);
     private static final String INPUT = "src" + File.separator + "main" + File.separator
             + "resources" + File.separator + "input";
 
