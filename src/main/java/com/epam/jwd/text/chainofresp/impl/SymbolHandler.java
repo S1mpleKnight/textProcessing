@@ -36,7 +36,6 @@ public class SymbolHandler implements BaseTextHandler{
             }
         } else {
             symbols.addAll(calculateExpression(sequence));
-            // todo create valid string to RPN parser
         }
         return symbols;
     }
