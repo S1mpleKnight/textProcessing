@@ -4,6 +4,7 @@ import com.epam.jwd.text.units.api.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sentence implements Unit{
     private List<Lexeme> lexemes;
@@ -33,5 +34,10 @@ public class Sentence implements Unit{
     @Override
     public void operation(){
 
+    }
+
+    @Override
+    public String toString(){
+        return lexemes.stream().map(Lexeme::toString).collect(Collectors.joining(" "));
     }
 }

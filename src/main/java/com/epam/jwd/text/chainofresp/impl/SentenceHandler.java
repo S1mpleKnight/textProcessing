@@ -35,7 +35,7 @@ public class SentenceHandler implements BaseTextHandler{
             sentence = new Sentence();
             sentencesList.add(sentence);
             List<Unit> lexemes = this.lexemeHandler
-                    .handleRequest(Arrays.asList(text.split("\\s+")));
+                    .handleRequest(Arrays.asList(text.trim().split("\\s+")));
             for (Unit lexeme : lexemes){
                 sentence.add(lexeme);
             }

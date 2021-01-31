@@ -4,6 +4,7 @@ import com.epam.jwd.text.units.api.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Paragraph implements Unit{
     private List<Sentence> sentences;
@@ -33,5 +34,10 @@ public class Paragraph implements Unit{
     @Override
     public void operation(){
 
+    }
+
+    @Override
+    public String toString(){
+        return sentences.stream().map(Sentence::toString).collect(Collectors.joining("."));
     }
 }

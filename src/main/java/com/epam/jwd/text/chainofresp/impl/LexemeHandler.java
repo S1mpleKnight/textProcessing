@@ -35,7 +35,7 @@ public class LexemeHandler implements BaseTextHandler{
             lexeme = new Lexeme();
             lexemesList.add(lexeme);
             List<Unit> symbols = this.symbolHandler
-                    .handleRequest(Arrays.asList(text.split("")));
+                    .handleRequest(Arrays.asList(text.trim().split("")));
             for (Unit symbol : symbols){
                 lexeme.add(symbol);
             }

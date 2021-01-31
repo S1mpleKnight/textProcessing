@@ -36,7 +36,7 @@ public class ParagraphHandler implements BaseTextHandler{
             paragraph = new Paragraph();
             paragraphsList.add(paragraph);
             List<Unit> sentences = this.sentenceHandler
-                    .handleRequest(Arrays.asList(text.split("(\\.)|(\\?)|(\\!)|(\\.\\.\\.)")));
+                    .handleRequest(Arrays.asList(text.trim().split("(\\.)|(\\?)|(\\!)|(\\.\\.\\.)")));
             for (Unit sentence : sentences){
                 paragraph.add(sentence);
             }

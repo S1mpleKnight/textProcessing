@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SymbolHandler implements BaseTextHandler{
@@ -48,6 +49,7 @@ public class SymbolHandler implements BaseTextHandler{
 
     private List<Unit> calculateExpression(){
         // TODO: 31.01.2021
-        return null;
+        return Arrays.asList(new Symbol('e'), new Symbol('x'),
+                new Symbol('p'), new Symbol('r'));
     }
 }
