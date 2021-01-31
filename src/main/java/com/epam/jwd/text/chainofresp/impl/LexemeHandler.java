@@ -3,7 +3,6 @@ package com.epam.jwd.text.chainofresp.impl;
 import com.epam.jwd.text.chainofresp.api.BaseTextHandler;
 import com.epam.jwd.text.units.api.Unit;
 import com.epam.jwd.text.units.impl.Lexeme;
-import com.epam.jwd.text.units.impl.Symbol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,7 @@ public class LexemeHandler implements BaseTextHandler{
             List<Unit> symbols = this.symbolHandler
                     .handleRequest(Arrays.asList(text.trim().split("")));
             for (Unit symbol : symbols){
-                lexeme.add( symbol);
+                lexeme.add(symbol);
             }
             lexemesList.add(lexeme);
         }

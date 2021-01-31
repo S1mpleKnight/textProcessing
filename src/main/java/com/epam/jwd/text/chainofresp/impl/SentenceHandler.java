@@ -14,6 +14,7 @@ public class SentenceHandler implements BaseTextHandler{
     private static final Logger LOGGER = LoggerFactory.getLogger(SentenceHandler.class);
     private static SentenceHandler sentenceHandler;
     private final LexemeHandler lexemeHandler;
+    private static final String LEXEME_PARSING_EXPR = "\\s+";
 
     private SentenceHandler(){
         this.lexemeHandler = LexemeHandler.getLexemeHandler();
@@ -35,7 +36,7 @@ public class SentenceHandler implements BaseTextHandler{
             sentence = new Sentence();
             sentencesList.add(sentence);
             List<Unit> lexemes = this.lexemeHandler
-                    .handleRequest(Arrays.asList(text.trim().split("\\s+")));
+                    .handleRequest(Arrays.asList(text.trim().split(LEXEME_PARSING_EXPR)));
             for (Unit lexeme : lexemes){
                 sentence.add(lexeme);
             }

@@ -14,6 +14,7 @@ public class ParagraphHandler implements BaseTextHandler{
     private static final Logger LOGGER = LoggerFactory.getLogger(ParagraphHandler.class);
     private static ParagraphHandler paragraphHandler;
     private final SentenceHandler sentenceHandler;
+    private static final String SENTENCE_PARSING_EXPR = "(\\.)|(\\?)|(\\!)|(\\.\\.\\.)";
 
 
     private ParagraphHandler(){
@@ -36,7 +37,7 @@ public class ParagraphHandler implements BaseTextHandler{
             paragraph = new Paragraph();
             paragraphsList.add(paragraph);
             List<Unit> sentences = this.sentenceHandler
-                    .handleRequest(Arrays.asList(text.trim().split("(\\.)|(\\?)|(\\!)|(\\.\\.\\.)")));
+                    .handleRequest(Arrays.asList(text.trim().split(SENTENCE_PARSING_EXPR)));
             for (Unit sentence : sentences){
                 paragraph.add(sentence);
             }
