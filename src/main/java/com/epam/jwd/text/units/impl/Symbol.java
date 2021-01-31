@@ -13,10 +13,9 @@ public class Symbol implements Unit{
         return character;
     }
 
-    public Boolean isLetter(){
-        char symbol = character;
-        return ((symbol >= 65) && (symbol <= 90))
-                || ((symbol >= 97) && (symbol <= 122));
+    public static boolean isOperator(char symbol){
+        return (symbol == '>') || (symbol == '<') || (symbol == '|') || (symbol == '&')
+                || (symbol == '~') || (symbol == '^') || (symbol == '(') || (symbol == ')');
     }
 
     @Override

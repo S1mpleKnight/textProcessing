@@ -29,14 +29,10 @@ public class TextHandler implements BaseTextHandler{
     public List<Unit> handleRequest(List<String> sequence){
         LOGGER.info("Handle text request");
         Text text = new Text();
-        List<Unit> paragraphs = this.getParagraphHandler().handleRequest(sequence);
+        List<Unit> paragraphs = this.paragraphHandler.handleRequest(sequence);
         for (Unit unit : paragraphs){
             text.add(unit);
         }
         return Collections.singletonList(text);
-    }
-
-    public ParagraphHandler getParagraphHandler(){
-        return paragraphHandler;
     }
 }

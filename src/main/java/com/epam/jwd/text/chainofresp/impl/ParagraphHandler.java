@@ -11,17 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ParagraphHandler implements BaseTextHandler{
+    private static final Logger LOGGER = LoggerFactory.getLogger(ParagraphHandler.class);
     private static ParagraphHandler paragraphHandler;
     private final SentenceHandler sentenceHandler;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ParagraphHandler.class);
 
 
     private ParagraphHandler(){
         this.sentenceHandler = SentenceHandler.getSentenceHandler();
-    }
-
-    public SentenceHandler getSentenceHandler(){
-        return sentenceHandler;
     }
 
     public static ParagraphHandler getParagraphHandler(){
@@ -36,12 +32,12 @@ public class ParagraphHandler implements BaseTextHandler{
         LOGGER.info("Handle paragraph request");
         List<Unit> paragraphsList = new ArrayList<>();
         Paragraph paragraph;
-        for (String text: sequence){
+        for (String text : sequence){
             paragraph = new Paragraph();
             paragraphsList.add(paragraph);
-            List<Unit> sentences = this.getSentenceHandler()
+            List<Unit> sentences = this.sentenceHandler
                     .handleRequest(Arrays.asList(text.split("(\\.)|(\\?)|(\\!)|(\\.\\.\\.)")));
-            for (Unit sentence: sentences){
+            for (Unit sentence : sentences){
                 paragraph.add(sentence);
             }
         }
