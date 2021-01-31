@@ -23,7 +23,7 @@ public class Text implements Unit{
 
     @Override
     public void add(Unit anyUnit){
-
+        paragraphs.add((Paragraph) anyUnit);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class Text implements Unit{
 
     @Override
     public String toString(){
-        return paragraphs.stream().map(Paragraph::toString).collect(Collectors.joining("\n\t"));
+        return paragraphs.stream().map(Paragraph::toString).collect(Collectors.joining(".\n"));
     }
 }

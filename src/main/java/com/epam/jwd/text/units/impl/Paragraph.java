@@ -23,7 +23,7 @@ public class Paragraph implements Unit{
 
     @Override
     public void add(Unit anyUnit){
-
+        sentences.add((Sentence) anyUnit);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class Paragraph implements Unit{
 
     @Override
     public String toString(){
-        return sentences.stream().map(Sentence::toString).collect(Collectors.joining("."));
+        return sentences.stream().map(Sentence::toString).collect(Collectors.joining(".\n"));
     }
 }

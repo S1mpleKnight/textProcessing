@@ -23,7 +23,7 @@ public class Sentence implements Unit{
 
     @Override
     public void add(Unit anyUnit){
-
+        lexemes.add((Lexeme) anyUnit);
     }
 
     @Override

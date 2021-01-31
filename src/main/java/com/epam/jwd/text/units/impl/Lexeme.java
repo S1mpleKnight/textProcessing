@@ -24,7 +24,7 @@ public class Lexeme implements Unit{
 
     @Override
     public void add(Unit anyUnit){
-
+        symbols.add((Symbol) anyUnit);
     }
 
     @Override
