@@ -15,7 +15,7 @@ public class Symbol implements Unit{
 
     public static boolean isOperator(char symbol){
         return (symbol == '>') || (symbol == '<') || (symbol == '|') || (symbol == '&')
-                || (symbol == '~') || (symbol == '^') || (symbol == '(') || (symbol == ')');
+                || (symbol == '~') || (symbol == '^');
     }
 
     @Override

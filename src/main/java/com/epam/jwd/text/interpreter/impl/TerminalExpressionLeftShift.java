@@ -1,6 +1,5 @@
 package com.epam.jwd.text.interpreter.impl;
 
-import com.epam.jwd.text.interpreter.Expression;
 import com.epam.jwd.text.interpreter.api.AbstractExpression;
 
 public class TerminalExpressionLeftShift implements AbstractExpression{

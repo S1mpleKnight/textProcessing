@@ -1,6 +1,8 @@
 package com.epam.jwd.text.chainofresp.impl;
 
 import com.epam.jwd.text.chainofresp.api.BaseTextHandler;
+import com.epam.jwd.text.interpreter.impl.Expression;
+import com.epam.jwd.text.rpn.PolishParser;
 import com.epam.jwd.text.units.api.Unit;
 import com.epam.jwd.text.units.impl.Symbol;
 import org.slf4j.Logger;
@@ -33,7 +35,8 @@ public class SymbolHandler implements BaseTextHandler{
                 symbols.add(new Symbol(symbol.charAt(0)));
             }
         } else {
-            symbols.addAll(calculateExpression());
+            symbols.addAll(calculateExpression(sequence));
+            // todo create valid string to RPN parser
         }
         return symbols;
     }
@@ -47,9 +50,32 @@ public class SymbolHandler implements BaseTextHandler{
         return true;
     }
 
-    private List<Unit> calculateExpression(){
-        // TODO: 31.01.2021
-        return Arrays.asList(new Symbol('e'), new Symbol('x'),
-                new Symbol('p'), new Symbol('r'));
+    private List<Unit> calculateExpression(List<String> sequence){
+        List<String> rpn = PolishParser.RPN(Arrays.asList(makeValidExpressionString(sequence).split(" ")));
+        List<Unit> symbols = new ArrayList<>();
+        for (String symbol: Expression.getExpression(rpn).calculate().toString().split("")){
+            symbols.add(new Symbol(symbol.charAt(0)));
+        }
+        return symbols;
+    }
+
+    private String makeValidExpressionString(List<String> sequence){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sequence.size(); i++){
+            if (sequence.get(i).equals(">")){
+                if ((i + 1) < sequence.size() && sequence.get(i + 1).equals(">")){
+                    sb.append(">>").append(" ");
+                }
+            } else if (sequence.get(i).equals("<")){
+                if ((i + 1) < sequence.size() && sequence.get(i + 1).equals("<")){
+                    sb.append("<<").append(" ");
+                }
+            } else if (i == sequence.size()-1){
+                sb.append(sequence.get(i));
+            } else {
+                sb.append(sequence.get(i)).append(" ");
+            }
+        }
+        return sb.toString();
     }
 }

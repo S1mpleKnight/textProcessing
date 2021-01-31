@@ -1,34 +1,39 @@
-package com.epam.jwd.text.interpreter;
+package com.epam.jwd.text.interpreter.impl;
 
 import com.epam.jwd.text.interpreter.api.AbstractExpression;
-import com.epam.jwd.text.interpreter.impl.NotTerminalExpression;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionAnd;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionLeftShift;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionNot;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionOr;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionRightShift;
-import com.epam.jwd.text.interpreter.impl.TerminalExpressionXor;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Expression{
-    private final ArrayList<AbstractExpression> listExpression;
-    private final ArrayDeque<Integer> contextValues;
-    private final List<String> symbols;
+    private ArrayList<AbstractExpression> listExpression;
+    private ArrayDeque<Integer> contextValues;
+    private List<String> symbols;
+    private static Expression expression;
 
-    public Expression(List<String> symbols){
+    private Expression(List<String> symbols){
         this.listExpression = new ArrayList<>();
         this.contextValues = new ArrayDeque<>();
         this.symbols = symbols;
     }
 
-    public Integer popValue(){
+    public static Expression getExpression(List<String> symbols){
+        if (expression == null){
+            expression = new Expression(symbols);
+        } else {
+            expression.symbols = symbols;
+            expression.contextValues = new ArrayDeque<>();
+            expression.listExpression = new ArrayList<>();
+        }
+        return expression;
+    }
+
+    Integer popValue(){
         return contextValues.pop();
     }
 
-    public void pushValue(Integer value){
+    void pushValue(Integer value){
         this.contextValues.push(value);
     }
 
