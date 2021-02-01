@@ -1,12 +1,17 @@
 package com.epam.jwd.text.rpn;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class PolishParser{
+    public static final Logger LOGGER = LoggerFactory.getLogger(PolishParser.class);
 
     public static List<String> RPN(List<String> input){
+        LOGGER.info("Convert to rpn");
         List<String> output = new ArrayList<>();
         Stack<String> stack = new Stack<>();
 

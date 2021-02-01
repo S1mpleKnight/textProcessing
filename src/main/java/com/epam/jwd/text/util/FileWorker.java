@@ -31,16 +31,14 @@ public class FileWorker{
     public static void writeFile(String path, List<String> text){
         LOGGER.info("Writing result");
         File file = new File(path);
-        if (file.exists()){
-            writeText(file, text);
-        } else {
+        if (!file.exists()){
             try{
                 Files.createFile(file.toPath());
             } catch (IOException e){
                 LOGGER.error(e.getLocalizedMessage());
             }
-            writeText(file, text);
         }
+        writeText(file, text);
     }
 
     private static void writeText(File file, List<String> text){
