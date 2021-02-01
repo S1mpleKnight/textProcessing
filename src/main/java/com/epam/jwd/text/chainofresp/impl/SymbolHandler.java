@@ -13,8 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SymbolHandler implements BaseTextHandler{
-    private static SymbolHandler symbolHandler;
     private static final Logger LOGGER = LoggerFactory.getLogger(SymbolHandler.class);
+    private static SymbolHandler symbolHandler;
 
     private SymbolHandler(){
     }
@@ -31,7 +31,7 @@ public class SymbolHandler implements BaseTextHandler{
         LOGGER.info("Handle symbol request");
         List<Unit> symbols = new ArrayList<>();
         if (checkSequence(sequence)){
-            for (String symbol: sequence){
+            for (String symbol : sequence){
                 symbols.add(new Symbol(symbol.charAt(0)));
             }
         } else {
@@ -41,7 +41,7 @@ public class SymbolHandler implements BaseTextHandler{
     }
 
     private boolean checkSequence(List<String> sequence){
-        for (String symbol: sequence){
+        for (String symbol : sequence){
             if (Symbol.isOperator(symbol.charAt(0))){
                 return false;
             }
@@ -52,7 +52,7 @@ public class SymbolHandler implements BaseTextHandler{
     private List<Unit> calculateExpression(List<String> sequence){
         List<String> rpn = PolishParser.RPN(Arrays.asList(makeValidExpressionString(sequence).split(" ")));
         List<Unit> symbols = new ArrayList<>();
-        for (String symbol: Expression.getExpression(rpn).calculate().toString().split("")){
+        for (String symbol : Expression.getExpression(rpn).calculate().toString().split("")){
             symbols.add(new Symbol(symbol.charAt(0)));
         }
         return symbols;
@@ -69,7 +69,7 @@ public class SymbolHandler implements BaseTextHandler{
                 if ((i + 1) < sequence.size() && sequence.get(i + 1).equals("<")){
                     sb.append("<<").append(" ");
                 }
-            } else if (i == sequence.size()-1){
+            } else if (i == sequence.size() - 1){
                 sb.append(sequence.get(i));
             } else {
                 sb.append(sequence.get(i)).append(" ");

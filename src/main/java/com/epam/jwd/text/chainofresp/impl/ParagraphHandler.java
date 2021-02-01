@@ -12,9 +12,9 @@ import java.util.List;
 
 public class ParagraphHandler implements BaseTextHandler{
     private static final Logger LOGGER = LoggerFactory.getLogger(ParagraphHandler.class);
+    private static final String SENTENCE_PARSING_EXPR = "(\\.)|(\\?)|(\\!)|(\\.\\.\\.)";
     private static ParagraphHandler paragraphHandler;
     private final SentenceHandler sentenceHandler;
-    private static final String SENTENCE_PARSING_EXPR = "(\\.)|(\\?)|(\\!)|(\\.\\.\\.)";
 
 
     private ParagraphHandler(){

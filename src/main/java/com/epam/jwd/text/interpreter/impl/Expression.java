@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Expression{
+    private static Expression expression;
     private ArrayList<AbstractExpression> listExpression;
     private ArrayDeque<Integer> contextValues;
     private List<String> symbols;
-    private static Expression expression;
 
     private Expression(List<String> symbols){
         this.listExpression = new ArrayList<>();

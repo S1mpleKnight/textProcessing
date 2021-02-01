@@ -14,7 +14,8 @@ class TextRemakingTest{
     @org.junit.jupiter.api.Test
     void firstTask(){
         TextHandler textHandler = TextHandler.getTextHandler();
-        List<Unit> list = textHandler.handleRequest(FileWorker.readFile()); Assert.isNonEmpty(list);
+        List<Unit> list = textHandler.handleRequest(FileWorker.readFile());
+        Assert.isNonEmpty(list);
         List<String> stringList = TextRemaking.paragraphSortBySize((Text) list.get(0));
         Assert.isNonEmpty(stringList);
         FileWorker.writeText(new File("src" + File.separator + "main" + File.separator
@@ -24,7 +25,8 @@ class TextRemakingTest{
     @org.junit.jupiter.api.Test
     void secondTask(){
         TextHandler textHandler = TextHandler.getTextHandler();
-        List<Unit> list = textHandler.handleRequest(FileWorker.readFile()); Assert.isNonEmpty(list);
+        List<Unit> list = textHandler.handleRequest(FileWorker.readFile());
+        Assert.isNonEmpty(list);
         List<String> stringList = TextRemaking.lexemeSortBySize((Text) list.get(0));
         Assert.isNonEmpty(stringList);
         FileWorker.writeText(new File("src" + File.separator + "main" + File.separator

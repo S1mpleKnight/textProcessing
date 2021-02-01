@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TextRemaking{
     private static final String FIRST = "src" + File.separator + "main" + File.separator
@@ -40,8 +39,8 @@ public class TextRemaking{
 
     public static List<String> lexemeSortBySize(Text someText){
         List<String> anotherText = new ArrayList<>();
-        for (Paragraph paragraph: someText.getParagraphs()){
-            for (Sentence sentence: paragraph.getSentences()){
+        for (Paragraph paragraph : someText.getParagraphs()){
+            for (Sentence sentence : paragraph.getSentences()){
                 sentence.setLexemes(sentence.getLexemes()
                         .stream()
                         .sorted()
@@ -62,7 +61,7 @@ public class TextRemaking{
         Set<Long> values = valuesOfContainsSymbol(lexemes, character);
         Map<Long, List<String>> map = lexemesListByTimesOfContains(values, lexemes, character);
         List<Long> keys = map.keySet().stream().sorted().collect(Collectors.toList());
-        for (Long key: keys){
+        for (Long key : keys){
             list.addFirst(map.get(key)
                     .stream()
                     .map(String::toLowerCase)
@@ -75,7 +74,7 @@ public class TextRemaking{
     private static Map<Long, List<String>> lexemesListByTimesOfContains(Set<Long> values, List<Lexeme> lexemes,
                                                                         Character character){
         Map<Long, List<String>> map = new HashMap<>();
-        for (Long value: values){
+        for (Long value : values){
             List<String> lexemeList = lexemes
                     .stream()
                     .filter(lexeme -> value.equals(numberOfContains(lexeme, character)))
@@ -88,7 +87,7 @@ public class TextRemaking{
 
     private static Set<Long> valuesOfContainsSymbol(List<Lexeme> lexemes, Character character){
         Set<Long> values = new HashSet<>();
-        for (Lexeme lexeme: lexemes){
+        for (Lexeme lexeme : lexemes){
             values.add(numberOfContains(lexeme, character));
         }
         return values;
@@ -104,8 +103,8 @@ public class TextRemaking{
 
     private static List<Lexeme> allLexemes(Text someText){
         List<Lexeme> lexemes = new ArrayList<>();
-        for (Paragraph paragraph: someText.getParagraphs()){
-            for (Sentence sentence: paragraph.getSentences()){
+        for (Paragraph paragraph : someText.getParagraphs()){
+            for (Sentence sentence : paragraph.getSentences()){
                 lexemes.addAll(sentence.getLexemes());
             }
         }

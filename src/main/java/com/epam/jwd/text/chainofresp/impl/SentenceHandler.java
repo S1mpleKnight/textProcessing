@@ -12,9 +12,9 @@ import java.util.List;
 
 public class SentenceHandler implements BaseTextHandler{
     private static final Logger LOGGER = LoggerFactory.getLogger(SentenceHandler.class);
+    private static final String LEXEME_PARSING_EXPR = "(\\s+)|(,\\s+)";
     private static SentenceHandler sentenceHandler;
     private final LexemeHandler lexemeHandler;
-    private static final String LEXEME_PARSING_EXPR = "(\\s+)|(,\\s+)";
 
     private SentenceHandler(){
         this.lexemeHandler = LexemeHandler.getLexemeHandler();

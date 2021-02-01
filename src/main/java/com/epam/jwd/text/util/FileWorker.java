@@ -42,8 +42,8 @@ public class FileWorker{
     }
 
     public static void writeText(File file, List<String> text){
-        try(Writer writer = new FileWriter(file)){
-            for (String line: text){
+        try (Writer writer = new FileWriter(file)){
+            for (String line : text){
                 writer.write(line);
                 writer.append('\n');
             }

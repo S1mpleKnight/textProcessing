@@ -43,6 +43,6 @@ public class Paragraph implements Unit, Comparable<Paragraph>{
 
     @Override
     public int compareTo(Paragraph paragraph){
-        return Integer.compare(this.sentences.size(),paragraph.sentences.size());
+        return Integer.compare(this.sentences.size(), paragraph.sentences.size());
     }
 }
