@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -23,6 +25,33 @@ public class FileWorker{
         } catch (IOException e){
             LOGGER.error("File reading error " + e.getLocalizedMessage());
             return Collections.emptyList();
+        }
+    }
+
+    public static void writeFile(String path, List<String> text){
+        LOGGER.info("Writing result");
+        File file = new File(path);
+        if (file.exists()){
+            writeText(file, text);
+        } else {
+            try{
+                Files.createFile(file.toPath());
+            } catch (IOException e){
+                LOGGER.error(e.getLocalizedMessage());
+            }
+            writeText(file, text);
+        }
+    }
+
+    private static void writeText(File file, List<String> text){
+        try(Writer writer = new FileWriter(file)){
+            for (String line: text){
+                writer.write(line);
+                writer.append('\n');
+            }
+            writer.flush();
+        } catch (IOException e){
+            LOGGER.error(e.getLocalizedMessage());
         }
     }
 }

@@ -9,13 +9,13 @@ public class Symbol implements Unit{
         this.character = character;
     }
 
-    public Character getCharacter(){
-        return character;
-    }
-
     public static boolean isOperator(char symbol){
         return (symbol == '>') || (symbol == '<') || (symbol == '|') || (symbol == '&')
                 || (symbol == '~') || (symbol == '^');
+    }
+
+    public Character getCharacter(){
+        return character;
     }
 
     @Override

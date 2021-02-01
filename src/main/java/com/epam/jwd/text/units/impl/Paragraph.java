@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Paragraph implements Unit{
+public class Paragraph implements Unit, Comparable<Paragraph>{
     private List<Sentence> sentences;
 
     public Paragraph(){
@@ -38,6 +38,11 @@ public class Paragraph implements Unit{
 
     @Override
     public String toString(){
-        return sentences.stream().map(Sentence::toString).collect(Collectors.joining(".\n"));
+        return sentences.stream().map(Sentence::toString).collect(Collectors.joining(".\n", "", "."));
+    }
+
+    @Override
+    public int compareTo(Paragraph paragraph){
+        return Integer.compare(this.sentences.size(),paragraph.sentences.size());
     }
 }

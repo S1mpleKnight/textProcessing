@@ -13,12 +13,12 @@ public class Text implements Unit{
         paragraphs = new ArrayList<>();
     }
 
-    public void setParagraphs(List<Paragraph> paragraphs){
-        this.paragraphs = paragraphs;
-    }
-
     public List<Paragraph> getParagraphs(){
         return paragraphs;
+    }
+
+    public void setParagraphs(List<Paragraph> paragraphs){
+        this.paragraphs = paragraphs;
     }
 
     @Override
@@ -38,6 +38,6 @@ public class Text implements Unit{
 
     @Override
     public String toString(){
-        return paragraphs.stream().map(Paragraph::toString).collect(Collectors.joining(".\n"));
+        return paragraphs.stream().map(Paragraph::toString).collect(Collectors.joining(".\n", "", "."));
     }
 }

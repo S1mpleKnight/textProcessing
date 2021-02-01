@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Lexeme implements Unit{
+public class Lexeme implements Unit, Comparable<Lexeme>{
     private List<Symbol> symbols;
 
+
+    public Lexeme(){
+        symbols = new ArrayList<>();
+    }
 
     public List<Symbol> getSymbols(){
         return symbols;
@@ -16,10 +20,6 @@ public class Lexeme implements Unit{
 
     public void setSymbols(List<Symbol> symbols){
         this.symbols = symbols;
-    }
-
-    public Lexeme(){
-        symbols = new ArrayList<>();
     }
 
     @Override
@@ -40,5 +40,10 @@ public class Lexeme implements Unit{
     @Override
     public String toString(){
         return symbols.stream().map(Symbol::toString).collect(Collectors.joining(""));
+    }
+
+    @Override
+    public int compareTo(Lexeme lexeme){
+        return Integer.compare(this.symbols.size(), lexeme.symbols.size());
     }
 }
