@@ -26,7 +26,7 @@ public class TextRemaking{
     private static final String THIRD = "src" + File.separator + "main" + File.separator
             + "resources" + File.separator + "thirdTask";
 
-    private static List<String> paragraphSortBySize(Text someText){
+    public static List<String> paragraphSortBySize(Text someText){
         return someText.getParagraphs()
                 .stream()
                 .sorted()
@@ -38,7 +38,7 @@ public class TextRemaking{
         FileWorker.writeFile(FIRST, paragraphSortBySize(someText));
     }
 
-    private static List<String> lexemeSortBySize(Text someText){
+    public static List<String> lexemeSortBySize(Text someText){
         List<String> anotherText = new ArrayList<>();
         for (Paragraph paragraph: someText.getParagraphs()){
             for (Sentence sentence: paragraph.getSentences()){
@@ -56,7 +56,7 @@ public class TextRemaking{
         FileWorker.writeFile(SECOND, lexemeSortBySize(someText));
     }
 
-    private static List<String> lexemeSortByCharIncluded(Text someText, Character character){
+    public static List<String> lexemeSortByCharIncluded(Text someText, Character character){
         LinkedList<String> list = new LinkedList<>();
         List<Lexeme> lexemes = allLexemes(someText);
         Set<Long> values = valuesOfContainsSymbol(lexemes, character);

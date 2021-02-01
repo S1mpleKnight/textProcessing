@@ -41,7 +41,7 @@ public class FileWorker{
         writeText(file, text);
     }
 
-    private static void writeText(File file, List<String> text){
+    public static void writeText(File file, List<String> text){
         try(Writer writer = new FileWriter(file)){
             for (String line: text){
                 writer.write(line);
