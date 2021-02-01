@@ -1,4 +1,7 @@
 .idea/
 logs/
 target/
+src/main/resources/firstTask
+src/main/resources/secondTask
+src/main/resources/thirdTask
 *.iml
